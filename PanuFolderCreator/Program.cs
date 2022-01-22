@@ -12,7 +12,6 @@ namespace PanuFolderCreator
         /// The main entry point for the application.
         /// </summary>
         /// 
-        public static string[] ExtensionCollection = new string[] { ".mp4", ".avi", ".ktv", ".mov" , ".wav"};
 
         [STAThread]
         static void Main()

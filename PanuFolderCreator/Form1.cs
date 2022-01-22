@@ -8,7 +8,8 @@ namespace PanuFolderCreator
     public partial class Form1 : Form
     {
         private string[] AllFiles;
-        private List<string> ExtensionGenerated;
+        private Dictionary<string, bool> ExtensionGenerated = new Dictionary<string, bool> { { ".mp4", false }, { ".avi", false }, { ".ktv", false }, { ".mov", false } };
+
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +20,9 @@ namespace PanuFolderCreator
 
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+
+    private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -45,29 +48,30 @@ namespace PanuFolderCreator
         private void GenerateFolderButton_Click(object sender, EventArgs e)
         {
             TraverseFiles();
-            MessageBox.Show("done");
-            Directory.CreateDirectory(textBox1.Text + "\\555");
         }
 
         private void TraverseFiles()
         {
+            if (textBox1.Text == string.Empty) 
+            {
+                MessageBox.Show("directory cannot be null");
+                return;
+            }
             AllFiles = Directory.GetFiles(textBox1.Text);
 
             label2.Text = string.Empty;
-            ExtensionGenerated = new List<string>();
             for (int i = 0; i < AllFiles.Length; i++)
             {
-                ExtensionGenerated.Add(Path.GetExtension(AllFiles[i]));
                 CreateFolder(AllFiles[i]);
             }
+            MessageBox.Show("done");
         }
 
         private void CreateFolder(string file)
         {
-            //bool isCreateFolder = Program.ExtensionCollection.All(x => file.EndsWith(x));
-            foreach (var extensionIndex in Program.ExtensionCollection)
+            foreach (var extensionIndex in ExtensionGenerated.Keys)
             {
-                if (file.EndsWith(extensionIndex))
+                if (file.EndsWith(extensionIndex) && ExtensionGenerated[extensionIndex] == true)
                 {
                     string folderName = Path.GetFileNameWithoutExtension(file);
                     if (!Directory.Exists(textBox1.Text + $"\\{folderName}"))
@@ -79,7 +83,6 @@ namespace PanuFolderCreator
                     {
                         MessageBox.Show($"{folderName} already exist");
                     }
-                    //D:\panun\
                 }
             }
 
@@ -90,19 +93,32 @@ namespace PanuFolderCreator
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Mp4_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (!ExtensionGenerated.ContainsKey(".mp4"))
+                return;
+            ExtensionGenerated[".mp4"] = mp4Check.CheckState == CheckState.Checked;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void Avi_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (!ExtensionGenerated.ContainsKey(".avi"))
+                return;
+            ExtensionGenerated[".avi"] = aviCheck.CheckState == CheckState.Checked;
         }
 
-        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        private void Ktv_CheckedChanged(object sender, EventArgs e)
         {
+            if (!ExtensionGenerated.ContainsKey(".ktv"))
+                return;
+            ExtensionGenerated[".ktv"] = ktvCheck.CheckState == CheckState.Checked;
+        }
 
+        private void Mov_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ExtensionGenerated.ContainsKey(".mov"))
+                return;
+            ExtensionGenerated[".mov"] = movCheck.CheckState == CheckState.Checked;
         }
     }
 }

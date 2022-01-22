@@ -34,11 +34,11 @@ namespace PanuFolderCreator
             this.BrowseButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.movCheck = new System.Windows.Forms.CheckBox();
+            this.ktvCheck = new System.Windows.Forms.CheckBox();
+            this.mp4Check = new System.Windows.Forms.CheckBox();
+            this.aviCheck = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // GenerateFolderButton
@@ -83,6 +83,50 @@ namespace PanuFolderCreator
             // 
             this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
+            // movCheck
+            // 
+            this.movCheck.AutoSize = true;
+            this.movCheck.Location = new System.Drawing.Point(221, 91);
+            this.movCheck.Name = "movCheck";
+            this.movCheck.Size = new System.Drawing.Size(49, 17);
+            this.movCheck.TabIndex = 7;
+            this.movCheck.Text = ".mov";
+            this.movCheck.UseVisualStyleBackColor = true;
+            this.movCheck.CheckedChanged += new System.EventHandler(this.Mov_CheckedChanged);
+            // 
+            // ktvCheck
+            // 
+            this.ktvCheck.AutoSize = true;
+            this.ktvCheck.Location = new System.Drawing.Point(166, 91);
+            this.ktvCheck.Name = "ktvCheck";
+            this.ktvCheck.Size = new System.Drawing.Size(44, 17);
+            this.ktvCheck.TabIndex = 8;
+            this.ktvCheck.Text = ".ktv";
+            this.ktvCheck.UseVisualStyleBackColor = true;
+            this.ktvCheck.CheckedChanged += new System.EventHandler(this.Ktv_CheckedChanged);
+            // 
+            // mp4Check
+            // 
+            this.mp4Check.AutoSize = true;
+            this.mp4Check.Location = new System.Drawing.Point(111, 91);
+            this.mp4Check.Name = "mp4Check";
+            this.mp4Check.Size = new System.Drawing.Size(49, 17);
+            this.mp4Check.TabIndex = 9;
+            this.mp4Check.Text = ".mp4";
+            this.mp4Check.UseVisualStyleBackColor = true;
+            this.mp4Check.CheckedChanged += new System.EventHandler(this.Mp4_CheckedChanged);
+            // 
+            // aviCheck
+            // 
+            this.aviCheck.AutoSize = true;
+            this.aviCheck.Location = new System.Drawing.Point(276, 91);
+            this.aviCheck.Name = "aviCheck";
+            this.aviCheck.Size = new System.Drawing.Size(43, 17);
+            this.aviCheck.TabIndex = 10;
+            this.aviCheck.Text = ".avi";
+            this.aviCheck.UseVisualStyleBackColor = true;
+            this.aviCheck.CheckedChanged += new System.EventHandler(this.Avi_CheckedChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -92,56 +136,15 @@ namespace PanuFolderCreator
             this.label2.TabIndex = 5;
             this.label2.Text = "label2";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(221, 91);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(49, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = ".mov";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(166, 91);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(44, 17);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = ".ktv";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(111, 91);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(49, 17);
-            this.checkBox3.TabIndex = 9;
-            this.checkBox3.Text = ".mp4";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(276, 91);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(43, 17);
-            this.checkBox4.TabIndex = 10;
-            this.checkBox4.Text = ".avi";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 281);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.aviCheck);
+            this.Controls.Add(this.mp4Check);
+            this.Controls.Add(this.ktvCheck);
+            this.Controls.Add(this.movCheck);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.BrowseButton);
@@ -162,11 +165,11 @@ namespace PanuFolderCreator
         private System.Windows.Forms.Button BrowseButton;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.CheckBox movCheck;
+        private System.Windows.Forms.CheckBox ktvCheck;
+        private System.Windows.Forms.CheckBox mp4Check;
+        private System.Windows.Forms.CheckBox aviCheck;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
     }
 }
 
