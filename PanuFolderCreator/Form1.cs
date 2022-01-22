@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 namespace PanuFolderCreator
 {
-    public partial class Form1 : Form
+    public partial class AlicianMovieRelocator : Form
     {
         private string[] AllFiles;
         private Dictionary<string, bool> ExtensionGenerated = new Dictionary<string, bool> { { ".mp4", false }, { ".avi", false }, { ".ktv", false }, { ".mov", false } };
 
-        public Form1()
+        public AlicianMovieRelocator()
         {
             InitializeComponent();
         }
