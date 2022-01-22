@@ -63,6 +63,7 @@ namespace PanuFolderCreator
             for (int i = 0; i < AllFiles.Length; i++)
             {
                 CreateFolder(AllFiles[i]);
+                RelocateFiles(AllFiles[i]);
             }
             MessageBox.Show("done");
         }
@@ -85,11 +86,29 @@ namespace PanuFolderCreator
                     }
                 }
             }
-
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
         {
+
+        }
+
+        private void RelocateFiles(string source)
+        {
+            string destination = $"{textBox1.Text}/{Path.GetFileNameWithoutExtension(source)}/{Path.GetFileNameWithoutExtension(source)}{Path.GetExtension(source)}";
+            if (File.Exists(destination))
+            {
+                MessageBox.Show($"{destination} already exist. Thw system is skipping this file.");
+                return;
+            }
+
+            foreach (var extensionIndex in ExtensionGenerated.Keys)
+            {
+                if (source.EndsWith(extensionIndex) && ExtensionGenerated[extensionIndex] == true)
+                {
+                    File.Move(source, destination);
+                }
+            }
 
         }
 
