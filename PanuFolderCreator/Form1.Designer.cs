@@ -1,4 +1,8 @@
 ﻿
+using System;
+using System.Windows.Forms;
+using System.Collections.Generic;
+
 namespace PanuFolderCreator
 {
     partial class AlicianMovieRelocator
@@ -31,22 +35,20 @@ namespace PanuFolderCreator
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlicianMovieRelocator));
             this.GenerateFolderButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.navigationText = new System.Windows.Forms.Label();
             this.BrowseButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.selectedDirectoryText = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.movCheck = new System.Windows.Forms.CheckBox();
-            this.ktvCheck = new System.Windows.Forms.CheckBox();
-            this.mp4Check = new System.Windows.Forms.CheckBox();
-            this.aviCheck = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.folderFromFilesText = new System.Windows.Forms.Label();
+            this.checker = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // GenerateFolderButton
             // 
-            this.GenerateFolderButton.Location = new System.Drawing.Point(111, 246);
+            this.GenerateFolderButton.Location = new System.Drawing.Point(690, 288);
+            this.GenerateFolderButton.Margin = new System.Windows.Forms.Padding(4);
             this.GenerateFolderButton.Name = "GenerateFolderButton";
-            this.GenerateFolderButton.Size = new System.Drawing.Size(149, 23);
+            this.GenerateFolderButton.Size = new System.Drawing.Size(199, 28);
             this.GenerateFolderButton.TabIndex = 0;
             this.GenerateFolderButton.Text = "Generate Folder";
             this.GenerateFolderButton.UseVisualStyleBackColor = true;
@@ -54,19 +56,21 @@ namespace PanuFolderCreator
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Select your directory here";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.navigationText.AutoSize = true;
+            this.navigationText.Location = new System.Drawing.Point(144, 68);
+            this.navigationText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.navigationText.Name = "label1";
+            this.navigationText.Size = new System.Drawing.Size(171, 17);
+            this.navigationText.TabIndex = 1;
+            this.navigationText.Text = "Select your directory here";
+            this.navigationText.Click += new System.EventHandler(this.label1_Click);
             // 
             // BrowseButton
             // 
-            this.BrowseButton.Location = new System.Drawing.Point(592, 68);
+            this.BrowseButton.Location = new System.Drawing.Point(789, 84);
+            this.BrowseButton.Margin = new System.Windows.Forms.Padding(4);
             this.BrowseButton.Name = "BrowseButton";
-            this.BrowseButton.Size = new System.Drawing.Size(75, 23);
+            this.BrowseButton.Size = new System.Drawing.Size(100, 28);
             this.BrowseButton.TabIndex = 3;
             this.BrowseButton.Text = "Browse";
             this.BrowseButton.UseVisualStyleBackColor = true;
@@ -74,84 +78,50 @@ namespace PanuFolderCreator
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(475, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.selectedDirectoryText.Location = new System.Drawing.Point(148, 84);
+            this.selectedDirectoryText.Margin = new System.Windows.Forms.Padding(4);
+            this.selectedDirectoryText.Name = "textBox1";
+            this.selectedDirectoryText.Size = new System.Drawing.Size(632, 22);
+            this.selectedDirectoryText.TabIndex = 4;
+            this.selectedDirectoryText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
-            // movCheck
-            // 
-            this.movCheck.AutoSize = true;
-            this.movCheck.Location = new System.Drawing.Point(221, 91);
-            this.movCheck.Name = "movCheck";
-            this.movCheck.Size = new System.Drawing.Size(49, 17);
-            this.movCheck.TabIndex = 7;
-            this.movCheck.Text = ".mov";
-            this.movCheck.UseVisualStyleBackColor = true;
-            this.movCheck.CheckedChanged += new System.EventHandler(this.Mov_CheckedChanged);
-            // 
-            // ktvCheck
-            // 
-            this.ktvCheck.AutoSize = true;
-            this.ktvCheck.Location = new System.Drawing.Point(166, 91);
-            this.ktvCheck.Name = "ktvCheck";
-            this.ktvCheck.Size = new System.Drawing.Size(44, 17);
-            this.ktvCheck.TabIndex = 8;
-            this.ktvCheck.Text = ".ktv";
-            this.ktvCheck.UseVisualStyleBackColor = true;
-            this.ktvCheck.CheckedChanged += new System.EventHandler(this.Ktv_CheckedChanged);
-            // 
-            // mp4Check
-            // 
-            this.mp4Check.AutoSize = true;
-            this.mp4Check.Location = new System.Drawing.Point(111, 91);
-            this.mp4Check.Name = "mp4Check";
-            this.mp4Check.Size = new System.Drawing.Size(49, 17);
-            this.mp4Check.TabIndex = 9;
-            this.mp4Check.Text = ".mp4";
-            this.mp4Check.UseVisualStyleBackColor = true;
-            this.mp4Check.CheckedChanged += new System.EventHandler(this.Mp4_CheckedChanged);
-            // 
-            // aviCheck
-            // 
-            this.aviCheck.AutoSize = true;
-            this.aviCheck.Location = new System.Drawing.Point(276, 91);
-            this.aviCheck.Name = "aviCheck";
-            this.aviCheck.Size = new System.Drawing.Size(43, 17);
-            this.aviCheck.TabIndex = 10;
-            this.aviCheck.Text = ".avi";
-            this.aviCheck.UseVisualStyleBackColor = true;
-            this.aviCheck.CheckedChanged += new System.EventHandler(this.Avi_CheckedChanged);
-            // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(108, 122);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
+            this.folderFromFilesText.AutoSize = true;
+            this.folderFromFilesText.Location = new System.Drawing.Point(145, 202);
+            this.folderFromFilesText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.folderFromFilesText.Name = "label2";
+            this.folderFromFilesText.Size = new System.Drawing.Size(46, 17);
+            this.folderFromFilesText.TabIndex = 5;
+            this.folderFromFilesText.Text = "label2";
+            // 
+            // checker
+            // 
+            this.checker.AutoSize = true;
+            this.checker.Location = new System.Drawing.Point(148, 112);
+            this.checker.Name = "checker";
+            this.checker.Size = new System.Drawing.Size(61, 21);
+            this.checker.TabIndex = 7;
+            this.checker.Text = "fghf";
+            this.checker.UseVisualStyleBackColor = true;
+            this.checker.CheckedChanged += new System.EventHandler(this.ExtensionsCheckedChanged);
             // 
             // AlicianMovieRelocator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 281);
-            this.Controls.Add(this.aviCheck);
-            this.Controls.Add(this.mp4Check);
-            this.Controls.Add(this.ktvCheck);
-            this.Controls.Add(this.movCheck);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1024, 346);
+            this.Controls.Add(this.folderFromFilesText);
+            this.Controls.Add(this.selectedDirectoryText);
             this.Controls.Add(this.BrowseButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.navigationText);
             this.Controls.Add(this.GenerateFolderButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AlicianMovieRelocator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AlicianMovieRelocator";
@@ -164,15 +134,12 @@ namespace PanuFolderCreator
         #endregion
 
         private System.Windows.Forms.Button GenerateFolderButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label navigationText;
         private System.Windows.Forms.Button BrowseButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox selectedDirectoryText;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.CheckBox movCheck;
-        private System.Windows.Forms.CheckBox ktvCheck;
-        private System.Windows.Forms.CheckBox mp4Check;
-        private System.Windows.Forms.CheckBox aviCheck;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label folderFromFilesText;
+        private CheckBox checker;
     }
 }
 
