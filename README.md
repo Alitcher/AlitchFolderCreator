@@ -1,10 +1,10 @@
 # AlitchFolderCreator
 This is a program requested by my peer. He wanted to use this program to generate a folder for each movie file.
 
-##Platform
+# Platform
 Run in Window console application.
 
-###Instruction
+# Instruction
 * Users browse the directory, which contains videos files.
 * Select video extension in checkboxes. (only the video file with the extension will be generated.)
 * click "Generate Folder."
